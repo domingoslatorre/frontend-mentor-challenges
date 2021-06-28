@@ -29,8 +29,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://domingoslatorre-stats-preview-card-component.netlify.app/](https://domingoslatorre-stats-preview-card-component.netlify.app/)
+- Live Site URL: [https://github.com/domingoslatorre/frontend-mentor-challenges/tree/main/stats-preview-card-component](https://github.com/domingoslatorre/frontend-mentor-challenges/tree/main/stats-preview-card-component)
 
 ## My process
 
