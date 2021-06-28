@@ -29,8 +29,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://domingoslatorre-stats-preview-card-component.netlify.app/](https://domingoslatorre-stats-preview-card-component.netlify.app/)
-- Live Site URL: [https://github.com/domingoslatorre/frontend-mentor-challenges/tree/main/stats-preview-card-component](https://github.com/domingoslatorre/frontend-mentor-challenges/tree/main/stats-preview-card-component)
+- Live Site URL: [https://domingoslatorre-stats-preview-card-component.netlify.app/](https://domingoslatorre-stats-preview-card-component.netlify.app/)
+- Solution URL:[https://github.com/domingoslatorre/frontend-mentor-challenges/tree/main/stats-preview-card-component](https://github.com/domingoslatorre/frontend-mentor-challenges/tree/main/stats-preview-card-component) 
 
 ## My process
 
