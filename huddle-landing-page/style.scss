@@ -1,0 +1,271 @@
+:root {
+  --ff-poppins: "Poppins", sans-serif;
+  --ff-open-sans: "Open Sans", sans-serif;
+  --violet: hsl(257, 40%, 49%);
+  --soft-magenta: hsl(300, 69%, 71%);
+  --text-white: #ffffff;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+img,
+h1,
+p,
+ul,
+li,
+a {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 15px;
+}
+
+body {
+  background-color: var(--violet);
+  background-image: url("images/bg-mobile.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+
+  &__logo {
+    width: 128px;
+    margin-top: 38px;
+    margin-bottom: 55px;
+  }
+
+  &__hero {
+    width: 100%;
+    margin-bottom: 60px;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    margin-bottom: 17px;
+    font-family: var(--ff-poppins);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    text-align: center;
+    color: var(--text-white);
+  }
+
+  &__desc {
+    margin-bottom: 24px;
+    font-family: Open Sans;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  &__cta {
+    width: 200px;
+    height: 40px;
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: var(--violet);
+    border: none;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.269022);
+    border-radius: 20px;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--soft-magenta);
+      color: var(--text-white);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+  }
+
+  &__social {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+
+    &__item {
+      display: block;
+      margin-right: 10.5px;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      &:hover {
+        .page__social__link {
+          border: 1px solid var(--soft-magenta);
+        }
+
+        .page__social__image {
+          fill: var(--soft-magenta);
+        }
+      }
+    }
+
+    &__link {
+      display: block;
+      padding: 6px;
+
+      &--rounded {
+        border: 1px solid var(--text-white);
+        border-radius: 50px;
+      }
+    }
+
+    &__image {
+      display: block;
+      width: 14px;
+      height: 14px;
+      fill: var(--text-white);
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .page {
+    width: 550px;
+
+    &__logo {
+      width: 160px;
+      margin-top: 42px;
+    }
+
+    &__hero {
+      width: 100%;
+    }
+
+    &__title {
+      font-size: 34px;
+      line-height: 42px;
+    }
+
+    &__desc {
+      font-size: 18px;
+      line-height: 28px;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  body {
+    background-image: url("images/bg-desktop.svg");
+    background-size: auto;
+    background-position: 0% 0%;
+  }
+
+  .page {
+    width: 1296px;
+
+    &__logo {
+      width: 215px;
+      margin-top: 52px;
+      margin-left: -4px;
+    }
+
+    &__main {
+      flex-direction: row;
+      align-items: flex-start;
+      margin-top: 30px;
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      margin-top: 37px;
+      margin-left: 54px;
+      align-items: flex-start;
+    }
+
+    &__hero {
+      width: 100%;
+      margin-bottom: 0px;
+    }
+
+    &__title {
+      font-size: 40px;
+      line-height: 60px;
+      text-align: left;
+    }
+
+    &__desc {
+      margin-top: 6px;
+      font-size: 18px;
+      line-height: 27px;
+      text-align: left;
+    }
+
+    &__cta {
+      width: 200px;
+      height: 56px;
+      font-size: 18px;
+      line-height: 27px;
+      box-shadow: 2px 4px 9px 3px rgba(0, 0, 0, 0.258633);
+      border-radius: 28px;
+    }
+
+    &__footer {
+      justify-content: flex-end;
+      margin-top: 18px;
+    }
+
+    &__social {
+      &__item {
+        margin-right: 17px;
+
+        &:last-of-type {
+          margin-right: 4px;
+        }
+      }
+
+      &__link {
+        padding: 10px;
+
+        &--rounded {
+          border-radius: 50px;
+        }
+      }
+
+      &__image {
+        width: 19px;
+        height: 19px;
+      }
+    }
+  }
+}
