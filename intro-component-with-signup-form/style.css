@@ -85,10 +85,22 @@ body {
   background-color: #ffffff;
 }
 
+.page__form-group {
+  margin-bottom: 16px;
+}
+
+.page__form-group--invalid .page__input {
+  border-color: #ff7a7a;
+  color: #ff7a7a;
+  background-image: url(images/icon-error.svg);
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 18px 18px;
+}
+
 .page__input {
   width: 100%;
-  margin-bottom: 16px;
-  padding: 19px 22px;
+  padding: 16px 22px 16px 22px;
   border: 1px solid #dedede;
   border-radius: 4px;
   font-size: 14px;
@@ -115,6 +127,15 @@ body {
 
 .page__input:focus {
   border: 1px solid #3e3c49;
+}
+
+.page__invalid-feedback {
+  margin-top: 5px;
+  margin-right: 4px;
+  font-size: 11px;
+  font-style: italic;
+  text-align: right;
+  color: #ff7a7a;
 }
 
 .page__button {

@@ -84,12 +84,21 @@ body {
   }
 
   &__form-group {
+    margin-bottom: 16px;
+
+    &--invalid  .page__input {
+      border-color: $red;
+      color: $red;
+      background-image: url(images/icon-error.svg);
+      background-repeat: no-repeat;
+      background-position: right 20px center;
+      background-size: 18px 18px;
+    }
   }
 
   &__input {
     width: 100%;
-    margin-bottom: 16px;
-    padding: 19px 22px;
+    padding: 16px 22px 16px 22px;
     border: 1px solid #dedede;
     border-radius: 4px;
     font-size: 14px;
@@ -104,6 +113,15 @@ body {
     &:focus {
       border: 1px solid $dark-blue;
     }
+  }
+
+  &__invalid-feedback {
+    margin-top: 5px;
+    margin-right: 4px;
+    font-size: 11px;
+    font-style: italic;
+    text-align: right;
+    color: $red;
   }
 
   &__button {
