@@ -47,14 +47,14 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 296px;
+  width: 300px;
   margin: auto;
 }
 
 .page__logo {
-  width: 120px;
+  width: 128px;
   margin-top: 38px;
-  margin-bottom: 60px;
+  margin-bottom: 55px;
 }
 
 .page__hero {
@@ -89,7 +89,7 @@ body {
 }
 
 .page__title {
-  margin-bottom: 32px;
+  margin-bottom: 17px;
   font-family: var(--ff-poppins);
   font-weight: 600;
   font-size: 24px;
@@ -174,7 +174,7 @@ body {
 
 .page__social__link {
   display: block;
-  padding: 7px;
+  padding: 6px;
 }
 
 .page__social__link--rounded {
@@ -213,14 +213,16 @@ body {
 @media (min-width: 1440px) {
   body {
     background-image: url("images/bg-desktop.svg");
-    background-size: cover;
+    background-size: auto;
+    background-position: 0% 0%;
   }
   .page {
-    width: 1280px;
+    width: 1296px;
   }
   .page__logo {
-    width: 160px;
-    margin-top: 42px;
+    width: 215px;
+    margin-top: 52px;
+    margin-left: -4px;
   }
   .page__main {
     -webkit-box-orient: horizontal;
@@ -230,6 +232,7 @@ body {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
+    margin-top: 30px;
   }
   .page__text {
     display: -webkit-box;
@@ -239,25 +242,25 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -ms-flex-line-pack: start;
-        align-content: flex-start;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-    margin-top: 44px;
-    margin-left: 60px;
+    margin-top: 37px;
+    margin-left: 54px;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   .page__hero {
     width: 100%;
+    margin-bottom: 0px;
   }
   .page__title {
-    font-size: 34px;
-    line-height: 42px;
+    font-size: 40px;
+    line-height: 60px;
     text-align: left;
   }
   .page__desc {
+    margin-top: 6px;
     font-size: 18px;
-    line-height: 28px;
+    line-height: 27px;
     text-align: left;
   }
   .page__cta {
@@ -273,9 +276,13 @@ body {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+    margin-top: 18px;
   }
   .page__social__item {
     margin-right: 17px;
+  }
+  .page__social__item:last-of-type {
+    margin-right: 4px;
   }
   .page__social__link {
     padding: 10px;
