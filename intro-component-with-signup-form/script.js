@@ -3,7 +3,6 @@ class FormGroup {
     this._name = name;
     this._input = input;
     this._validations = validations;
-    this._state = "not-filled";
     this._errors = [];
   }
 
@@ -24,23 +23,19 @@ class FormGroup {
   }
 
   get value() {
-    return this.input.value.trim();
+    return this._input.value.trim();
   }
 
   get parent() {
-    return this.input.parentNode;
+    return this._input.parentNode;
   }
 
-  invalidate() {
-    this.state = "invalid";
+  addError(error) {
+    this._errors.push(error);
   }
 
-  inInvalidState() {
-    return this.state == "invalid";
-  }
-
-  setNotFilled() {
-    this.state = "not-filled";
+  removeErrors() {
+    this._errors = [];
   }
 }
 
@@ -54,7 +49,6 @@ class Form {
       new FormGroup("Email", querySelector("#email"), ["not-empty", "valid-email"]),
       new FormGroup("Password", querySelector("#password"), ["not-empty"]),
     ];
-    this._errors = [];
   }
 
   get formGroups() {
@@ -62,35 +56,31 @@ class Form {
   }
 
   get errors() {
-    return this._errors;
-  }
-
-  removeInvalidState(input) {
-    const formGroup = this._formGroups.find((f) => f.input == input);
-    if (formGroup.inInvalidState()) {
-      formGroup.setNotFilled();
-      this._errors = this._errors.filter((error) => error.formGroup != formGroup);
-    }
+    return this._formGroups.map((formGroup) => formGroup.errors).flat();
   }
 
   validate() {
-    this._errors = [];
+    this._clearErrors();
     this._formGroups.forEach((formGroup) => {
-      this._validateFormGroup(formGroup);
+      formGroup.validations.forEach((validation) => {
+        if (validation === "not-empty") this._notEmptyValidation(formGroup);
+        if (validation === "valid-email") this._validEmailValidation(formGroup);
+      });
     });
   }
 
-  _validateFormGroup(formGroup) {
-    formGroup.validations.forEach((validation) => {
-      if (validation === "not-empty") this._notEmptyValidation(formGroup);
-      if (validation === "valid-email") this._validEmailValidation(formGroup);
-    });
+  removeInvalidState(input) {
+    const formGroup = this._formGroups.find((formGroup) => formGroup.input == input);
+    formGroup.removeErrors();
+  }
+
+  _clearErrors() {
+    this._formGroups.forEach((formGroup) => formGroup.removeErrors());
   }
 
   _notEmptyValidation(formGroup) {
     if (formGroup.value === "") {
-      formGroup.invalidate();
-      this._errors.push({
+      formGroup.addError({
         formGroup: formGroup,
         message: `${formGroup.name} cannot be empty`,
       });
@@ -101,60 +91,70 @@ class Form {
     var re =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(formGroup.value)) {
-      formGroup.invalidate();
-      this._errors.push({
+      formGroup.addError({
         formGroup: formGroup,
-        message: `${formGroup.name} cannot be invalid email`,
+        message: "Looks like this is not an email",
       });
     }
   }
 }
 
-class FormController {
-  constructor() {
-    this._form = new Form();
+class FormView {
+  constructor(form) {
+    this._form = form;
   }
 
-  submit(event) {
-    event.preventDefault();
-    this._form.validate();
-    this._updateView();
+  get invalidFormGroupClass() {
+    return "page__form-group--invalid";
   }
 
-  input(event) {
-    this._form.removeInvalidState(event.target);
-    this._updateView();
+  get invalidFormFeedbackClass() {
+    return "page__invalid-feedback";
   }
 
-  _updateView() {
+  updateView() {
     this._clearView();
-    this._form.errors.map((erro) => {
-      const { formGroup, message } = erro;
-      formGroup.parent.classList.add("page__form-group--invalid");
+    this._form.errors.map(({ formGroup, message }) => {
+      formGroup.parent.classList.add(this.invalidFormGroupClass);
       formGroup.parent.insertBefore(this._createFeedbackElement(message), formGroup.input.nextSibling);
     });
   }
 
   _clearView() {
     this._form.formGroups.forEach((formGroup) => {
-      const parent = formGroup.parent;
-      parent.classList.remove("page__form-group--invalid");
-      if (parent.querySelector(".page__invalid-feedback")) {
-        parent.querySelectorAll(".page__invalid-feedback").forEach((node) => node.remove());
-      }
+      formGroup.parent.querySelectorAll(`.${this.invalidFormFeedbackClass}`).forEach((node) => node.remove());
+      formGroup.parent.classList.remove(this.invalidFormGroupClass);
     });
   }
 
   _createFeedbackElement(message) {
     const element = document.createElement("p");
     element.appendChild(document.createTextNode(message));
-    element.classList.add("page__invalid-feedback");
+    element.classList.add(this.invalidFormFeedbackClass);
     return element;
   }
 }
 
-const formController = new FormController();
-document.querySelector("#sign-up-form").addEventListener("submit", formController.submit.bind(formController));
+class FormController {
+  constructor(form) {
+    this._form = form;
+    this._formView = new FormView(form);
+  }
+
+  submit(event) {
+    event.preventDefault();
+    this._form.validate();
+    this._formView.updateView();
+  }
+
+  input(event) {
+    this._form.removeInvalidState(event.target);
+    this._formView.updateView();
+  }
+}
+
+const formController = new FormController(new Form());
+document.querySelector(".page__form").addEventListener("submit", formController.submit.bind(formController));
 document
   .querySelectorAll(".page__input")
   .forEach((input) => input.addEventListener("input", formController.input.bind(formController)));
@@ -171,7 +171,7 @@ document
 //   .forEach((input) => input.addEventListener("input", removeInvalidState));
 
 // document
-//   .getElementById("sign-up-form")
+//   .querySelector(".page__form")
 //   .addEventListener("submit", function (e) {
 //     e.preventDefault();
 //     validateNotEmpty(firstNameInput, "First Name");
