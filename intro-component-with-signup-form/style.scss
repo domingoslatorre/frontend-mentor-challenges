@@ -86,7 +86,7 @@ body {
   &__form-group {
     margin-bottom: 16px;
 
-    &--invalid  .page__input {
+    &--invalid .page__input {
       border-color: $red;
       color: $red;
       background-image: url(images/icon-error.svg);

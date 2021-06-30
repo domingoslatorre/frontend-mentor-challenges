@@ -104,7 +104,7 @@ class Form {
       formGroup.invalidate();
       this._errors.push({
         formGroup: formGroup,
-        message: `${formGroup.name} cannot be invalid email`,
+        message: "Looks like this is not an email",
       });
     }
   }
