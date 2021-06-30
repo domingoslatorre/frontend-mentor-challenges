@@ -49,6 +49,7 @@ Users should be able to:
 - Button effect with transform css property
 - Built-in form validation
 - SASS variables
+- Use aria-label in form fields
 
 ## Author
 
