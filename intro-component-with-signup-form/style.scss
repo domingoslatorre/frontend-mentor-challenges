@@ -67,7 +67,7 @@ body {
 
   &__promo {
     margin-bottom: 25px;
-    padding: 20px 60px;
+    padding: 18px 60px;
     font-size: 16px;
     line-height: 160%;
     text-align: center;
@@ -139,6 +139,10 @@ body {
     color: #ffffff;
     cursor: pointer;
 
+    &:hover {
+      background-color: hsla(154, 65%, 68%, 1);
+    }
+
     &:active {
       background-color: hsla(154, 65%, 68%, 1);
       box-shadow: 0px 1px 0px #2ebc7d;
@@ -159,5 +163,108 @@ body {
     font-weight: 600;
     text-decoration: none;
     color: $red;
+  }
+}
+
+@media (min-width: 650px) {
+  .page {
+    align-items: center;
+    &__title {
+      font-size: 36px;
+    }
+
+    &__signup {
+      width: 70%;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    background-image: url("images/bg-intro-desktop.png");
+  }
+
+  .page {
+    width: 77%;
+    flex-direction: row;
+    margin: 0px auto;
+    align-items: flex-start;
+
+    &__header {
+      margin-top: 0px;
+      margin-right: 70px;
+      width: 50%;
+      margin-top: 297px;
+    }
+
+    &__title {
+      text-align: left;
+      font-size: 52px;
+      line-height: 105%;
+      text-align: left;
+      letter-spacing: -1.7px;
+    }
+
+    &__desc {
+      text-align: left;
+      margin-top: 30px;
+    }
+
+    &__signup {
+      margin-top: 120px;
+      width: 55%;
+    }
+
+    &__form {
+      padding: 38px;
+      border-radius: 10px;
+    }
+
+    &__form-group {
+      margin-bottom: 18px;
+    }
+
+    &__input {
+      width: 100%;
+      padding: 20px 32px 20px 32px;
+      font-size: 15px;
+    }
+
+    &__button {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 20px 0 16px 0;
+      font-size: 16px;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0px 5px 0px #2ebc7d;
+      background-color: $green;
+      color: #ffffff;
+      cursor: pointer;
+
+      &:active {
+        background-color: hsla(154, 65%, 68%, 1);
+        box-shadow: 0px 1px 0px #2ebc7d;
+        transform: translateY(4px);
+      }
+    }
+
+    &__terms {
+      padding: 0 23px;
+      font-size: 11px;
+      text-align: center;
+      line-height: 180%;
+      color: #cccbd2;
+    }
+
+    &__terms-link {
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      color: $red;
+    }
   }
 }

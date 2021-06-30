@@ -67,7 +67,7 @@ body {
 
 .page__promo {
   margin-bottom: 25px;
-  padding: 20px 60px;
+  padding: 18px 60px;
   font-size: 16px;
   line-height: 160%;
   text-align: center;
@@ -155,6 +155,10 @@ body {
   cursor: pointer;
 }
 
+.page__button:hover {
+  background-color: #78e2b4;
+}
+
 .page__button:active {
   background-color: #78e2b4;
   -webkit-box-shadow: 0px 1px 0px #2ebc7d;
@@ -176,5 +180,105 @@ body {
   font-weight: 600;
   text-decoration: none;
   color: #ff7a7a;
+}
+
+@media (min-width: 650px) {
+  .page {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .page__title {
+    font-size: 36px;
+  }
+  .page__signup {
+    width: 70%;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    background-image: url("images/bg-intro-desktop.png");
+  }
+  .page {
+    width: 77%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin: 0px auto;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .page__header {
+    margin-top: 0px;
+    margin-right: 70px;
+    width: 50%;
+    margin-top: 297px;
+  }
+  .page__title {
+    text-align: left;
+    font-size: 52px;
+    line-height: 105%;
+    text-align: left;
+    letter-spacing: -1.7px;
+  }
+  .page__desc {
+    text-align: left;
+    margin-top: 30px;
+  }
+  .page__signup {
+    margin-top: 120px;
+    width: 55%;
+  }
+  .page__form {
+    padding: 38px;
+    border-radius: 10px;
+  }
+  .page__form-group {
+    margin-bottom: 18px;
+  }
+  .page__input {
+    width: 100%;
+    padding: 20px 32px 20px 32px;
+    font-size: 15px;
+  }
+  .page__button {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 20px 0 16px 0;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 5px 0px #2ebc7d;
+            box-shadow: 0px 5px 0px #2ebc7d;
+    background-color: #38cc8c;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  .page__button:active {
+    background-color: #78e2b4;
+    -webkit-box-shadow: 0px 1px 0px #2ebc7d;
+            box-shadow: 0px 1px 0px #2ebc7d;
+    -webkit-transform: translateY(4px);
+            transform: translateY(4px);
+  }
+  .page__terms {
+    padding: 0 23px;
+    font-size: 11px;
+    text-align: center;
+    line-height: 180%;
+    color: #cccbd2;
+  }
+  .page__terms-link {
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ff7a7a;
+  }
 }
 /*# sourceMappingURL=style.css.map */
