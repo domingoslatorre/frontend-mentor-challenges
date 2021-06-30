@@ -154,9 +154,7 @@ class FormController {
 }
 
 const formController = new FormController();
-
 document.querySelector("#sign-up-form").addEventListener("submit", formController.submit.bind(formController));
-
 document
   .querySelectorAll(".page__input")
   .forEach((input) => input.addEventListener("input", formController.input.bind(formController)));
