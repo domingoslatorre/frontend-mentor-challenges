@@ -112,15 +112,15 @@ class FormView {
     return "page__invalid-feedback";
   }
 
-  updateView() {
-    this._clearView();
+  update() {
+    this._clear();
     this._form.errors.map(({ formGroup, message }) => {
       formGroup.parent.classList.add(this.invalidFormGroupClass);
       formGroup.parent.insertBefore(this._createFeedbackElement(message), formGroup.input.nextSibling);
     });
   }
 
-  _clearView() {
+  _clear() {
     this._form.formGroups.forEach((formGroup) => {
       formGroup.parent.querySelectorAll(`.${this.invalidFormFeedbackClass}`).forEach((node) => node.remove());
       formGroup.parent.classList.remove(this.invalidFormGroupClass);
@@ -144,12 +144,12 @@ class FormController {
   submit(event) {
     event.preventDefault();
     this._form.validate();
-    this._formView.updateView();
+    this._formView.update();
   }
 
   input(event) {
     this._form.removeInvalidState(event.target);
-    this._formView.updateView();
+    this._formView.update();
   }
 }
 
