@@ -99,9 +99,9 @@ class Form {
   }
 }
 
-class FormController {
-  constructor() {
-    this._form = new Form();
+class FormView {
+  constructor(form) {
+    this._form = form;
   }
 
   get invalidFormGroupClass() {
@@ -112,18 +112,7 @@ class FormController {
     return "page__invalid-feedback";
   }
 
-  submit(event) {
-    event.preventDefault();
-    this._form.validate();
-    this._updateView();
-  }
-
-  input(event) {
-    this._form.removeInvalidState(event.target);
-    this._updateView();
-  }
-
-  _updateView() {
+  updateView() {
     this._clearView();
     this._form.errors.map(({ formGroup, message }) => {
       formGroup.parent.classList.add(this.invalidFormGroupClass);
@@ -146,7 +135,25 @@ class FormController {
   }
 }
 
-const formController = new FormController();
+class FormController {
+  constructor(form) {
+    this._form = form;
+    this._formView = new FormView(form);
+  }
+
+  submit(event) {
+    event.preventDefault();
+    this._form.validate();
+    this._formView.updateView();
+  }
+
+  input(event) {
+    this._form.removeInvalidState(event.target);
+    this._formView.updateView();
+  }
+}
+
+const formController = new FormController(new Form());
 document.querySelector(".page__form").addEventListener("submit", formController.submit.bind(formController));
 document
   .querySelectorAll(".page__input")
