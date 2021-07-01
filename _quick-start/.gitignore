@@ -1,0 +1,9 @@
+node_modules
+build
+npm-debug.log
+.env
+*.sketch
+*.fig
+*.xd
+.DS_Store
+.prettierignore

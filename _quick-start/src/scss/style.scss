@@ -1,0 +1,15 @@
+@import "variables";
+
+body {
+  font-size: 16px;
+  background-color: $color1;
+  color: $color2;
+
+  h1 {
+    border-radius: 20px;
+  }
+}
+
+a {
+  color: $color2;
+}
